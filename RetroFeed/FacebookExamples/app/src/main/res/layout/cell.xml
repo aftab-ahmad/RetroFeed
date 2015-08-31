@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_cell"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cell_bg"
+    android:orientation="vertical"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="13sp"
+        android:paddingBottom="13dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="50dp"
+        android:layout_height="17dp"
+        android:layout_weight="1"
+        android:id="@+id/row1">
+
+        <ImageView
+            android:id="@+id/facebook"
+            android:src="@drawable/facebook16"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fbCount"
+            android:textSize="13sp"
+            android:visibility="invisible"
+            android:textColor="#777777"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="50dp"
+        android:layout_height="17dp"
+        android:layout_weight="1"
+        android:id="@+id/row2">
+
+        <ImageView
+            android:id="@+id/twitter"
+            android:src="@drawable/twitter16"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/twitCount"
+            android:textSize="13sp"
+            android:visibility="invisible"
+            android:textColor="#777777"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="50dp"
+        android:layout_height="17dp"
+        android:layout_weight="1"
+        android:id="@+id/row3" >
+
+        <ImageView
+            android:id="@+id/instagram"
+            android:src="@drawable/instagram16"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/instaCount"
+            android:textSize="13sp"
+            android:visibility="invisible"
+            android:textColor="#777777"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>
