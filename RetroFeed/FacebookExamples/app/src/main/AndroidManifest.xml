@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.aftab.facebookexamples" >
+    package="com.android.aftab.retrofeed" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".CalendarActivity"
+            android:name="com.android.aftab.retrofeed.CalendarActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +20,8 @@
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".CalendarActivity">
+            android:name="com.android.aftab.retrofeed.SettingsActivity"
+            android:parentActivityName="com.android.aftab.retrofeed.CalendarActivity">
 
             <intent-filter>
                 <action android:name=".SettingsActivity" />
@@ -30,8 +30,8 @@
         </activity>
 
         <activity
-            android:name=".FeedActivity"
-            android:parentActivityName=".CalendarActivity">
+            android:name="com.android.aftab.retrofeed.FeedActivity"
+            android:parentActivityName="com.android.aftab.retrofeed.CalendarActivity">
 
             <intent-filter>
                 <action android:name=".FeedActivity" />
@@ -41,7 +41,7 @@
 
         <activity
             android:name="com.facebook.LoginActivity"
-            android:parentActivityName=".SettingsActivity"/>
+            android:parentActivityName="com.android.aftab.retrofeed.SettingsActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

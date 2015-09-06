@@ -7,7 +7,7 @@
  * Last Updated: April 12th, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.content.Context;
 import android.content.SharedPreferences;

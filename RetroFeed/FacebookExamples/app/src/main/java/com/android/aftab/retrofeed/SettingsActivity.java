@@ -9,10 +9,8 @@
  * Last Updated: March 1st, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.SearchManager;
 import android.content.Context;
 import android.graphics.Color;
@@ -31,12 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
-
-import com.facebook.widget.LoginButton;
-
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 public class SettingsActivity extends ActionBarActivity {
 

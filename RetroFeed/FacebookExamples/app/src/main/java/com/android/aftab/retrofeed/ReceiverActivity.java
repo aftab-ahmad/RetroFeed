@@ -8,7 +8,7 @@
  *******************************************************************************/
 
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

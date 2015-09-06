@@ -10,7 +10,7 @@
  * Last Updated: March 1st, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.os.Parcel;
 import android.os.Parcelable;

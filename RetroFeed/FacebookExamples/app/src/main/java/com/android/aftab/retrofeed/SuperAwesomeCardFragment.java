@@ -1,4 +1,4 @@
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -5,7 +5,7 @@
  * Last Updated: April 12th, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;

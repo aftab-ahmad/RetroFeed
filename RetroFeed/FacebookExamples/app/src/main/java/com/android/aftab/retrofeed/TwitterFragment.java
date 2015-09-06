@@ -10,7 +10,7 @@
  * Last Updated: March 13th, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,23 +26,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.facebook.HttpMethod;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterApiClient;
-import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import com.twitter.sdk.android.core.models.Tweet;
-import com.twitter.sdk.android.core.services.SearchService;
 import com.twitter.sdk.android.core.services.StatusesService;
 
 import java.text.ParseException;

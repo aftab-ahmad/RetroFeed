@@ -13,7 +13,7 @@
 
     <include layout="@layout/toolbar" />
 
-    <com.example.aftab.facebookexamples.PagerSlidingTabStrip
+    <com.android.aftab.retrofeed.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="48dp"

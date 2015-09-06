@@ -7,7 +7,7 @@
  * Last Updated: March 1st, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

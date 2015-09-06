@@ -1,4 +1,4 @@
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

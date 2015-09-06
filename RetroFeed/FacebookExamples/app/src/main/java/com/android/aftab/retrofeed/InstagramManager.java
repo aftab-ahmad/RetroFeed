@@ -8,7 +8,7 @@
  * Last Updated: April 12th, 2015
  **********************************************************************/
 
-package com.example.aftab.facebookexamples;
+package com.android.aftab.retrofeed;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.example.aftab.facebookexamples.InstagramDialog.OAuthDialogListener;
+import com.android.aftab.retrofeed.InstagramDialog.OAuthDialogListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
