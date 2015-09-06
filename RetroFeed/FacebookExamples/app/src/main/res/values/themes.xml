@@ -5,14 +5,14 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="android:textColorPrimary">@android:color/white</item>
 
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/main_color</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
 
@@ -24,7 +24,7 @@
     </style>
 
     <style name="Widget.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/main_color</item>
         <item name="navigationIcon">@drawable/ic_arrow_back_white</item>
     </style>
 

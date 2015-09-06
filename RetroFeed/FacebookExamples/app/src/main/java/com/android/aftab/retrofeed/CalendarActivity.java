@@ -15,29 +15,23 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
-
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import io.fabric.sdk.android.Fabric;
-
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterSession;
 
 import java.text.ParseException;
@@ -48,7 +42,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class CalendarActivity extends ActionBarActivity {
+import io.fabric.sdk.android.Fabric;
+
+public class CalendarActivity extends AppCompatActivity {
 
     private static final String TAG = "CalendarActivity";
 
@@ -57,19 +53,14 @@ public class CalendarActivity extends ActionBarActivity {
     private ArrayList <MediaInfo> tweets = new ArrayList<>();
     private ArrayList <MediaInfo> instaPhotos = new ArrayList<>();
 
-    private Toolbar toolbar;
-
-    private CaldroidFragment calendarFragment;
+	private CaldroidFragment calendarFragment;
     private FacebookFragment fbFragment;
     private TwitterFragment twitterFragment;
     private InstagramManager instagramManager;
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "VmLlxGJ0klOgQjGFWv61Rf0La";
-    private static final String TWITTER_SECRET = "DnOe9OgJaHxWQ8Et4sJfBEsdFKf6f7AeMfgsPkIASRuXVEm7Fg";
-
     private static final String KEY = "isLoggedIn";
     private static final String USER = "username";
+	private static final String CALDROID_SAVE = "CALDROID_SAVED_STATE";
 
     private boolean facebookLogin = false;
     private boolean twitterLogin = false;
@@ -93,14 +84,13 @@ public class CalendarActivity extends ActionBarActivity {
 
         progress = new ProgressDialog(this);
 
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(getString(R.string.twitter_key), getString(R.string.twitter_secret));
         Fabric.with(this, new Twitter(authConfig));
 
         /* Set the toolbar as action bar */
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+	    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            setStatusBarColor(findViewById(R.id.statusBarBackground),getResources().getColor(R.color.colorPrimaryDark));
         }
 
         /* Create a calendar fragment */
@@ -108,7 +98,7 @@ public class CalendarActivity extends ActionBarActivity {
 
         if (savedInstanceState != null) {
             calendarFragment.restoreStatesFromKey(savedInstanceState,
-                    "CALDROID_SAVED_STATE");
+		            CALDROID_SAVE);
         }
 
         // If activity is created from fresh
@@ -163,7 +153,7 @@ public class CalendarActivity extends ActionBarActivity {
                 Log.d(TAG, "Size is: " + photos.size());
 
                 // Condition that a click is made but user is not logged in to any media outlet
-                if (facebookLogin == false && twitterLogin == false && instagramLogin == false){
+                if (!facebookLogin && !twitterLogin && !instagramLogin){
                     Toast.makeText(getApplicationContext(), "Please login first.",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -204,36 +194,9 @@ public class CalendarActivity extends ActionBarActivity {
         getInstagramSession();
     }
 
-    /*              setStatusBarColor()          */
-    /* Sets the status bar's color and appearance*/
-    private void setStatusBarColor(View statusBar,int color){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-            //status bar height
-            int statusBarHeight = getStatusBarHeight();
-
-            //action bar height
-            statusBar.getLayoutParams().height = statusBarHeight;
-            statusBar.setBackgroundColor(color);
-        }
-    }
-
-    /*          getStatusBarHeight()        */
-    /* Fetches the height of the status bar */
-    private int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
-
     private void startProgressBar () {
         /* Animate progress bar */
-        if (facebookLogin == true || twitterLogin == true || instagramLogin == true) {
+        if (facebookLogin || twitterLogin || instagramLogin) {
             Log.d(TAG, "Progress started here: " + facebookLogin);
             progress.setMessage("Fetching Data");
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -283,18 +246,15 @@ public class CalendarActivity extends ActionBarActivity {
 
             startProgressBar();
 
-            String client_id = "b32d8581c4e5461198132d396a5c3990";
-            String client_secret = "1b3f073ef6194c8eb5f8a1f1e1208801";
-            String callback = "https://www.instagram.com";
+            String client_id = getString(R.string.CLIENT_ID);
+            String client_secret = getString(R.string.CLIENT_SECRET);
+            String callback = getString(R.string.CALLBACKURL);
 
             instagramManager = new InstagramManager(CalendarActivity.this, client_id, client_secret, callback);
             if (instagramManager.hasAccessToken()) {
                 Log.d (TAG, "In here - startInstaData");
                 instagramManager.startInstaData(CalendarActivity.this);
             }
-
-            //instagramFragment = new InstagramFragment();
-            //instagramFragment.startInstaData(CalendarActivity.this);
         }
         else {
             Log.d (TAG, "Logged out - Instagram.");
@@ -303,22 +263,22 @@ public class CalendarActivity extends ActionBarActivity {
     }
 
     private void hideProgressBar() {
-        if (twitterLogin == true && facebookLogin == false) {
+        /*if (twitterLogin && !facebookLogin) {
             if (tweets.size() > 0)
                 progress.hide();
         }
-        else if (twitterLogin == false && facebookLogin == true) {
+        else if (!twitterLogin && facebookLogin) {
             if (posts.size() > 0 && photos.size() > 0)
                 progress.hide();
         }
-        else if (twitterLogin == true && facebookLogin == true) {
+        else if (twitterLogin && facebookLogin) {
             if (photos.size() > 0 && posts.size() > 0 && tweets.size() > 0)
                 progress.hide();
         }
-        else if (instagramLogin == true) {
-            if (instaPhotos.size() > 0)
+        else if (instagramLogin && !instaPhotos.isEmpty()) {
                 progress.hide();
-        }
+        }*/
+	    progress.hide();
     }
 
     private void setMonth (int month){
@@ -327,19 +287,19 @@ public class CalendarActivity extends ActionBarActivity {
 
     public void setIcon () {
 
-        if (facebookLogin == true) {
+        if (facebookLogin) {
             photos = fbFragment.getPhotos();
             posts = fbFragment.getStatuses();
         }
 
-        if (twitterLogin == true) {
+        if (twitterLogin) {
             tweets = twitterFragment.getTweets();
 
             for (int i = 0; i < tweets.size(); i++) {
                 Log.d(TAG, tweets.get(i).toString());
             }
         }
-        if (instagramLogin == true) {
+        if (instagramLogin) {
             instaPhotos = instagramManager.getInstaPhotos();
 
             for (int i = 0; i < instaPhotos.size(); i++) {
@@ -347,20 +307,21 @@ public class CalendarActivity extends ActionBarActivity {
             }
         }
 
-        int curMonth =0;
+        int curMonth = 0;
         if (this.month == 0){
-            Date date = null;
+            Date date;
 
             String temp [] = calendarFragment.getMonthTitleTextView().getText().toString().split(" ");
-
             try {
                 date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(temp[0]);
+
+	            Calendar cal = Calendar.getInstance();
+	            cal.setTime(date);
+	            curMonth = cal.get(Calendar.MONTH)+1;
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            curMonth = cal.get(Calendar.MONTH)+1;
         }
         else
             curMonth = this.month;
@@ -446,7 +407,7 @@ public class CalendarActivity extends ActionBarActivity {
         super.onSaveInstanceState(outState);
 
         if (calendarFragment != null) {
-            calendarFragment.saveStatesToKey(outState, "CALDROID_SAVED_STATE");
+            calendarFragment.saveStatesToKey(outState, CALDROID_SAVE);
         }
     }
 }

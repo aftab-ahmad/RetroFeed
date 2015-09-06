@@ -16,7 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FeedActivity extends ActionBarActivity{
+public class FeedActivity extends AppCompatActivity {
 
     private ArrayList <MediaInfo> info = new ArrayList(); // ArrayList of Social Media data that need to be displayed for a date
     private ArrayList <MediaInfo> statuses = new ArrayList(); // ArrayList of Social Media data that need to be displayed for a date
