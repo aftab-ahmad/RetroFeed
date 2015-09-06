@@ -21,4 +21,7 @@
 
     <color name="list_background_pressed">#992416</color>
 
+    <color name="fte_color">#F44336</color>
+	<color name="fte_color_pressed">#D32F2F</color>
+
 </resources>

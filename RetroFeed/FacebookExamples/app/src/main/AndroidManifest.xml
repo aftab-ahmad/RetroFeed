@@ -10,13 +10,17 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+        <activity android:name="com.android.aftab.retrofeed.SplashScreenActivity" >
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
         <activity
             android:name="com.android.aftab.retrofeed.CalendarActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -52,5 +56,4 @@
             android:value="fc7f1085d601f0a95d2091127c7c07f007a5a354" />
 
     </application>
-
 </manifest>
